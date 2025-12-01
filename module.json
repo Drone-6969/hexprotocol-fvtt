@@ -17,6 +17,7 @@
   ],
 
   "esmodules": ["module/hexprotocol.mjs"],
+  "styles": ["styles/hexprotocol.css"],
 
   "languages": [
     {
