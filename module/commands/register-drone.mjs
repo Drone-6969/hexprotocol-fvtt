@@ -1,5 +1,5 @@
 /** @import { ChatLog } from "@client/applications/sidebar/tabs" */
-/** @import { ChatCommandData } from "./types" */
+/** @import { ChatCommandData, ChatMessageCallback } from "./types" */
 
 import { HEXPROTO } from "../config/config.mjs";
 
@@ -12,7 +12,20 @@ export const registerDroneCommand = {
   callback: registerCallback,
 };
 
-async function registerCallback(chat, parameters, messageData) {
+/** @type {ChatMessageCallback} */
+async function registerCallback(chat, parameters, _messageData) {
   // Get name w/ game.users.getName
-  const regex = /^(?<username>.*)\s+(?<droneId>\d{4})$/;
+  const regex = /^(?<uname>.*)\s+(?<droneId>\d{4})$/;
+
+  const { uname, droneId } = parameters.match(regex).groups;
+
+  const username = uname.trim();
+
+  if (!(username && droneId)) {
+    const errMsg = game.i18n.localize("HEXPROTO.error.invalidRegistration");
+    foundry.ui.notifications.warn(errMsg);
+    return;
+  }
+
+  
 }

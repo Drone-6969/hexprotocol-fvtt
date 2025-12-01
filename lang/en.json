@@ -121,7 +121,8 @@
     },
     "error": {
       "notADrone": "User is not a drone.",
-      "noMessageCode": "No message code specified."
+      "noMessageCode": "No message code specified.",
+      "invalidRegistration": "Invalid username or ID."
     }
   }
 }
