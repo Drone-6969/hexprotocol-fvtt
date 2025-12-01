@@ -1,0 +1,32 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.exclude": {
+    "foundry/": true,
+    "node_modules/": true,
+    ".yarn": true
+  },
+  "i18n-ally.localesPaths": ["lang", "foundry/lang"],
+  "i18n-ally.keystyle": "nested",
+
+  // This seems not to play nicely with Handlebars
+  "html.format.enable": false,
+  "cSpell.words": [
+    "charname",
+    "flexcol",
+    "flexrow",
+    "fvtt",
+    "hexprotocol",
+    "ITEMMODELS"
+  ]
+}

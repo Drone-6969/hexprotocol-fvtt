@@ -1,0 +1,3 @@
+# *Absolute* path to the server directory where the executable and the
+# `resources` and `app` directories are.
+installPath: "/path/to/foundry"

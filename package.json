@@ -1,0 +1,32 @@
+{
+  "packageManager": "yarn@4.12.0",
+  "name": "hexprotocol-fvtt",
+  "private": true,
+  "version": "1.0.0",
+  "description": "⬡-Protocol implementation for Foundry VTT.",
+  "homepage": "https://github.com/Drone-6969/hexprotocol-fvtt#readme",
+  "bugs": {
+    "url": "https://github.com/Drone-6969/hexprotocol-fvtt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drone-6969/hexprotocol-fvtt.git"
+  },
+  "license": "MIT",
+  "author": "Drone #6969",
+  "type": "module",
+  "main": "module/hexprotocol.mjs",
+  "scripts": {
+    "createSymlinks": "node ./tools/create-symlinks.mjs",
+    "postinstall": "npm run createSymlinks"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.5.0",
+    "prettier": "3.7.2",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1"
+  }
+}

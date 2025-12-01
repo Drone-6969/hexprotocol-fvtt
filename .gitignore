@@ -1,0 +1,36 @@
+### VS Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/i18n-ally-custom-framework.yml
+
+### yarn ###
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+# !.yarn/cache
+
+# and uncomment the following lines
+.pnp.*
+
+# Also run `yarn config set enableGlobalCache false` if doing zero-installs
+
+### Symlinks for Foundry intellisense and i18n-ally ###
+foundry-config.yaml
+foundry/
+
+# Uncomment if we migrate to Typescript
+# .typescript-build
+
+node_modules/

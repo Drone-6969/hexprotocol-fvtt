@@ -1,0 +1,28 @@
+{
+  "id": "hexprotocol",
+  "title": "⬡-Protocol",
+  "description": "Unofficial ⬡-Protocol implementation for FVTT chat.",
+  "version": "0.1.0",
+  "compatibility": {
+    "verified": 13
+  },
+
+  "url": "https://github.com/Drone-6969/hexprotocol-fvtt",
+
+  "authors": [
+    {
+      "name": "Drone #6969",
+      "url": "https://github.com/Drone-6969"
+    }
+  ],
+
+  "esmodules": ["module/hexprotocol.mjs"],
+
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}
