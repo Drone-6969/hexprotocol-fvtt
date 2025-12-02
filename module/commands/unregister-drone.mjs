@@ -38,7 +38,7 @@ async function unregisterCallback(_chat, parameters, _messageData) {
   const output = game.i18n.format(message, { user: user?.name, droneId });
 
   const content = `<span class="hexproto-output">${output}</span>`;
-  const alias = game.i18n.localize("HEXPROTO.chatAlias.hiveAI");
+  const alias = game.i18n.localize("HEXPROTO.chatAlias.mainframeAI");
   const flavor = game.i18n.localize("HEXPROTO.cmd.unregisterDrone.name");
 
   return {
