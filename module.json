@@ -39,6 +39,16 @@
           "verified": "2.0.4"
         }
       }
+    ],
+    "recommends": [
+      {
+        "id": "chat-portrait",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/p4535992/foundryvtt-chat-portrait/refs/heads/master/src/module.json",
+        "compatibility": {
+          "verified": "13.0.1"
+        }
+      }
     ]
   }
 }

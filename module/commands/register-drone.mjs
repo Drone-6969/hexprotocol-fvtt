@@ -49,6 +49,11 @@ async function registerDroneCallback(_chat, parameters, _messageData) {
     speaker: {
       alias,
     },
+    flags: {
+      hexprotocol: {
+        icon: "mainframe",
+      },
+    },
     flavor,
     whisper: [game.user._id],
   };

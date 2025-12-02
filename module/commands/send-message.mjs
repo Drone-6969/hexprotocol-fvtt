@@ -57,10 +57,17 @@ function sendMessageCallback(chat, parameters, _messageData) {
   const content = `<span class="hexproto-output">${protocolOutput}</span>`;
   const alias = game.i18n.localize("HEXPROTO.chatAlias.transmission");
 
+  const icon = msgCode === HEXPROTO.NARRATION_CODE ? "mainframe" : "drone";
+
   return {
     content,
     speaker: {
       alias,
+    },
+    flags: {
+      hexprotocol: {
+        icon,
+      },
     },
   };
 }
