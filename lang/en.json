@@ -18,20 +18,6 @@
     },
     "protocol": {
       "messageTemplate": "{droneId} :: Code {msgCode} :: {protocolMessage}",
-      "statusCodes": {
-        "statement": "Statement",
-        "signal": "Signal",
-        "beep": "Beep",
-        "commentary": "Commentary",
-        "query": "Query",
-        "answer": "Answer",
-        "status": "Status",
-        "response": "Response",
-        "error": "Error",
-        "mantra": "Mantra",
-        "fatalError": "Fatal error",
-        "narration": "Narration"
-      },
       "protocolMessage": {
         "000": "Error :: Previous statement malformed. Retracting and correcting.",
         "001": "Signal :: 🔴",
@@ -118,7 +104,6 @@
       }
     },
     "chatAlias": {
-      "drone": "Drone #{droneId}",
       "hiveAI": "SisAI",
       "transmission": "⬡-Protocol Transmission"
     },
