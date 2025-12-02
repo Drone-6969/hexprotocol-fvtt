@@ -7,11 +7,13 @@
       },
       "registerDrone": {
         "name": "Register Drone",
-        "desc": "Register a drone"
+        "desc": "Register a drone",
+        "commandOutput": "User {user} registered as a drone with ID #{droneId}."
       },
       "unregisterDrone": {
         "name": "Unregister Drone",
-        "desc": "Unregister a drone"
+        "desc": "Unregister a drone",
+        "commandOutput": "User {user} unregistered as a drone (former ID #{droneId})."
       }
     },
     "protocol": {
@@ -35,6 +37,7 @@
         "001": "Signal :: 🔴",
         "002": "Signal :: 🟡",
         "003": "Signal :: 🟢",
+        "007": "Beep",
         "050": "Statement",
         "051": "Commentary",
         "052": "Query",
@@ -120,9 +123,12 @@
       "transmission": "⬡-Protocol Transmission"
     },
     "error": {
-      "notADrone": "User is not a drone.",
-      "noMessageCode": "No message code specified.",
-      "invalidRegistration": "Invalid username or ID."
+      "notADrone": "You are not a drone.",
+      "alreadyADrone": "User {user} is already a drone.",
+      "idAlreadyAssigned": "Drone ID #{droneId} is already assigned.",
+      "invalidMessageCode": "⬡-Protocol error: Invalid message code {msgCode}.",
+      "invalidRegistration": "Invalid username or ID.",
+      "droneIdMismatch": "No match found for drone ID #{droneId}."
     }
   }
 }

@@ -17,9 +17,7 @@ const chatCommands = [
 function onChatCommandsReady(commands) {
   chatCommands.forEach((cmd) => {
     if (!cmd.description) {
-      cmd.description = game.i18n.localize(
-        `HEXPROTO.cmd.${cmd.name}.description`,
-      );
+      cmd.description = game.i18n.localize(`HEXPROTO.cmd.${cmd.locName}.desc`);
     }
     commands.register(cmd);
   });

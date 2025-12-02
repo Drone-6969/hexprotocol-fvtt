@@ -1,31 +1,55 @@
-/** @import { ChatLog } from "@client/applications/sidebar/tabs" */
 /** @import { ChatCommandData, ChatMessageCallback } from "./types" */
 
 import { HEXPROTO } from "../config/config.mjs";
+import { getUserByDroneId } from "../config/utils.mjs";
 
 /** @type {ChatCommandData} */
 export const registerDroneCommand = {
   name: "/h!register",
+  locName: "registerDrone",
   aliases: ["/h!dronify"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sun.svg" />',
-  callback: registerCallback,
+  callback: registerDroneCallback,
 };
 
 /** @type {ChatMessageCallback} */
-async function registerCallback(chat, parameters, _messageData) {
+async function registerDroneCallback(_chat, parameters, _messageData) {
   // Get name w/ game.users.getName
   const regex = /^(?<uname>.*)\s+(?<droneId>\d{4})$/;
 
-  const { uname, droneId } = parameters.match(regex).groups;
+  const { uname, droneId } = parameters.match(regex)?.groups ?? {
+    uname: "",
+    droneId: "",
+  };
 
-  const username = uname.trim();
+  const user = game.users.getName(uname.trim());
 
-  if (!(username && droneId)) {
-    const errMsg = game.i18n.localize("HEXPROTO.error.invalidRegistration");
-    foundry.ui.notifications.warn(errMsg);
-    return;
+  let message = "";
+
+  if (!(user && droneId)) {
+    message = "HEXPROTO.error.invalidRegistration";
+  } else if (user.getFlag(HEXPROTO.MODULE_ID, "droneId")) {
+    message = "HEXPROTO.error.alreadyADrone";
+  } else if (getUserByDroneId(droneId) != undefined) {
+    message = "HEXPROTO.error.idAlreadyAssigned";
+  } else {
+    user.setFlag(HEXPROTO.MODULE_ID, "droneId", droneId);
+    message = "HEXPROTO.cmd.registerDrone.commandOutput";
   }
 
-  
+  const output = game.i18n.format(message, { user: user?.name, droneId });
+
+  const content = `<span class="hexproto-output">${output}</span>`;
+  const alias = game.i18n.localize("HEXPROTO.chatAlias.hiveAI");
+  const flavor = game.i18n.localize("HEXPROTO.cmd.registerDrone.name");
+
+  return {
+    content,
+    speaker: {
+      alias,
+    },
+    flavor,
+    whisper: [game.user._id],
+  };
 }

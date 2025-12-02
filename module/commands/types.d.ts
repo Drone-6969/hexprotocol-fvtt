@@ -5,8 +5,10 @@ import ChatMessageData = foundry.documents.types.ChatMessageData;
 export interface ChatCommandData {
   // e.g. "/hx!format"
   name: string;
+  // Appended to localization string
+  locName: string;
   // Should always be the module ID! i.e. "hexprotocol"
-  module: string;
+  module: "hexprotocol";
   // e.g. ["/d", "/frm"]
   aliases?: string[];
   // <= 80 chars, not automatically localized
@@ -33,7 +35,7 @@ export interface ChatCommandData {
   closeOnComplete?: boolean;
 }
 export interface ChatCommanderObject {
-  register: (data: ChatCommandData) => void | Promise<void>;
+  register: (data: ChatCommandData) => MaybePromise<void>;
 }
 
 export type ChatMessageCallback = (

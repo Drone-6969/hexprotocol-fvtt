@@ -5,6 +5,7 @@ import { HEXPROTO } from "../config/config.mjs";
 /** @type {ChatCommandData} */
 export const sendMessageCommand = {
   name: "/h!send",
+  locName: "sendMessage",
   aliases: ["/d", "/h"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sound.svg" />',
@@ -16,24 +17,26 @@ function sendMessageCallback(chat, parameters, _messageData) {
   const droneId = game.user.getFlag(HEXPROTO.MODULE_ID, "droneId");
   if (!droneId) {
     const errMsg = game.i18n.localize("HEXPROTO.error.notADrone");
-    foundry.ui.notifications.warn(errMsg);
+    foundry.ui.notifications.error(errMsg);
     return;
   }
 
   // Gets a 3-digit message ID and content
-  const regex = /^(?<msgCode>\d{3})\s(?<msgContent>.*)$/;
+  const regex = /^((?<msgCode>\d{3})\s?)(?<msgContent>.*)$/;
 
-  const { msgCode, msgContent } = parameters.match(regex).groups;
+  const { msgCode, msgContent } = parameters.trim().match(regex).groups;
 
-  if (!msgCode) {
-    const errMsg = game.i18n.localize("HEXPROTO.error.noMessageCode");
-    foundry.ui.notifications.warn(errMsg);
-    return;
+  const whisper = [];
+  let message = "";
+
+  if (!(msgCode in HEXPROTO.protocolCodes)) {
+    message = "HEXPROTO.error.invalidMessageCode";
+    whisper.push(game.user._id);
+  } else {
+    message = "HEXPROTO.protocol.messageTemplate";
   }
 
-  const isContentCode = msgCode in HEXPROTO.protocolContentCodes;
-
-  const protocolOutput = game.i18n.format("HEXPROTO.protocol.messageTemplate", {
+  let protocolOutput = game.i18n.format(message, {
     droneId,
     msgCode,
     protocolMessage: game.i18n.localize(
@@ -41,11 +44,16 @@ function sendMessageCallback(chat, parameters, _messageData) {
     ),
   });
 
-  const extraContent = msgContent && isContentCode ? ` :: ${msgContent}` : "";
+  if (msgContent) {
+    if (HEXPROTO.protocolContentCodes.includes(msgCode)) {
+      protocolOutput += ` :: ${msgContent}`;
+    } else if (HEXPROTO.protocolAddressCodes.includes(msgCode)) {
+      protocolOutput += ` ${msgContent}`;
+    }
+  }
 
-  const alias = game.i18n.format("HEXPROTO.chatAlias.drone", { droneId });
-
-  const content = `<span class="hexproto-output">${protocolOutput}${extraContent}</span>`;
+  const content = `<span class="hexproto-output">${protocolOutput}</span>`;
+  const alias = game.i18n.localize("HEXPROTO.chatAlias.transmission");
 
   return {
     content,

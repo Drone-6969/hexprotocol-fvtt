@@ -92,12 +92,6 @@ const protocolContentCodes = [
   "052",
   // Answer
   "053",
-  // Statement :: Addressing: Drone.
-  "110",
-  // Statement :: Addressing: Admin.
-  "111",
-  // Statement :: Addressing: Associate.
-  "112",
   // Status
   "150",
   // Response
@@ -110,11 +104,18 @@ const protocolContentCodes = [
   "600",
 ];
 
-const NARRATION_CODE = "600";
+const protocolAddressCodes = [
+  // Statement :: Addressing: Drone.
+  "110",
+  // Statement :: Addressing: Admin.
+  "111",
+  // Statement :: Addressing: Associate.
+  "112",
+];
 
 export const HEXPROTO = {
   MODULE_ID: "hexprotocol",
   protocolCodes,
   protocolContentCodes,
-  NARRATION_CODE,
+  protocolAddressCodes,
 };
