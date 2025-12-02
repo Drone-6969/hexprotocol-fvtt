@@ -29,7 +29,9 @@ function sendMessageCallback(chat, parameters, _messageData) {
   const whisper = [];
   let message = "";
 
-  if (!(msgCode in HEXPROTO.protocolCodes)) {
+  const accessDenied = msgCode === HEXPROTO.NARRATION_CODE && !game.user.isGM;
+
+  if (!(msgCode in HEXPROTO.protocolCodes) || accessDenied) {
     message = "HEXPROTO.error.invalidMessageCode";
     whisper.push(game.user._id);
   } else {

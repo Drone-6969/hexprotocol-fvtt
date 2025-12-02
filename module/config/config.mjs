@@ -83,6 +83,8 @@ const protocolCodes = {
   600: "narration",
 };
 
+const NARRATION_CODE = "600";
+
 const protocolContentCodes = [
   // Statement
   "050",
@@ -101,7 +103,7 @@ const protocolContentCodes = [
   // Error
   "450",
   // Narration
-  "600",
+  NARRATION_CODE,
 ];
 
 const protocolAddressCodes = [
@@ -115,6 +117,7 @@ const protocolAddressCodes = [
 
 export const HEXPROTO = {
   MODULE_ID: "hexprotocol",
+  NARRATION_CODE,
   protocolCodes,
   protocolContentCodes,
   protocolAddressCodes,
