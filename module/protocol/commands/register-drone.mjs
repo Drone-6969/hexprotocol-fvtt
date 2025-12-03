@@ -1,7 +1,7 @@
-/** @import { ChatCommandData, ChatMessageCallback } from "./types" */
+/** @import { ChatCommandData, ChatMessageCallback } from "../_types" */
 
-import { HEXPROTO } from "../config/config.mjs";
-import { getUserByDroneId } from "../config/utils.mjs";
+import { HEXPROTO } from "../config.mjs";
+import { getUserByDroneId } from "../utils.mjs";
 
 /** @type {ChatCommandData} */
 export const registerDroneCommand = {
@@ -29,12 +29,12 @@ async function registerDroneCallback(_chat, parameters, _messageData) {
 
   if (!(user && droneId)) {
     message = "HEXPROTO.error.invalidRegistration";
-  } else if (user.getFlag(HEXPROTO.MODULE_ID, "droneId")) {
+  } else if (user.getFlag(CONFIG.HEXPROTO.MODULE_ID, "droneId")) {
     message = "HEXPROTO.error.alreadyADrone";
   } else if (getUserByDroneId(droneId) != undefined) {
     message = "HEXPROTO.error.idAlreadyAssigned";
   } else {
-    user.setFlag(HEXPROTO.MODULE_ID, "droneId", droneId);
+    user.setFlag(CONFIG.HEXPROTO.MODULE_ID, "droneId", droneId);
     message = "HEXPROTO.cmd.registerDrone.commandOutput";
   }
 

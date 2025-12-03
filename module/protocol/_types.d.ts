@@ -1,6 +1,6 @@
-import type { MaybePromise } from "../utils";
-import ChatLog = foundry.applications.sidebar.tabs.ChatLog;
-import ChatMessageData = foundry.documents.types.ChatMessageData;
+import type { MaybePromise } from "../global";
+type ChatLog = foundry.applications.sidebar.tabs.ChatLog;
+type ChatMessageData = foundry.documents.types.ChatMessageData;
 
 export interface ChatCommandData {
   // e.g. "/hx!format"

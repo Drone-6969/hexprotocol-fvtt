@@ -1,7 +1,7 @@
-/** @import { ChatCommandData, ChatMessageCallback } from "./types" */
+/** @import { ChatCommandData, ChatMessageCallback } from "../_types" */
 
-import { HEXPROTO } from "../config/config.mjs";
-import { getUserByDroneId } from "../config/utils.mjs";
+import { HEXPROTO } from "../config.mjs";
+import { getUserByDroneId } from "../utils.mjs";
 
 /** @type {ChatCommandData} */
 export const unregisterDroneCommand = {
