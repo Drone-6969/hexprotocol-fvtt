@@ -1,4 +1,4 @@
-/** @import { ChatCommand, ChatMessageCallback } from "../_types" */
+/** @import { ChatCommand, ChatMessageAutocompleteCallback, ChatMessageCallback } from "../_types" */
 
 import { HEXPROTO } from "../config.mjs";
 
@@ -10,6 +10,7 @@ export const sendMessageCommand = {
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sound.svg" />',
   callback,
+  autocompleteCallback,
 };
 
 /** @type {ChatMessageCallback} */
@@ -70,4 +71,9 @@ function callback(chat, parameters, _messageData) {
       },
     },
   };
+}
+
+/** @type {ChatMessageAutocompleteCallback} */
+function autocompleteCallback(menu, _alias, _parameters) {
+  console.log(menu);
 }
