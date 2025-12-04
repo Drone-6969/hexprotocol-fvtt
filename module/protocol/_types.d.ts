@@ -2,12 +2,12 @@ import type { MaybePromise } from "../global";
 type ChatLog = foundry.applications.sidebar.tabs.ChatLog;
 type ChatMessageData = foundry.documents.types.ChatMessageData;
 
-export interface ChatCommandData {
+export interface ChatCommand {
   // e.g. "/hx!format"
   name: string;
-  // Appended to localization string
+  /** Appended to localization string. My own addition @todo document this better*/
   locName: string;
-  // Should always be the module ID! i.e. "hexprotocol"
+  // Should always be the module ID!
   module: "hexprotocol";
   // e.g. ["/d", "/frm"]
   aliases?: string[];
@@ -18,28 +18,34 @@ export interface ChatCommandData {
   icon?: string;
   requiredRole?: keyof typeof CONST.USER_ROLES;
   // callback
-  callback?: (
-    chat: ChatLog,
-    parameters: string,
-    messageData: ChatMessageData,
-  ) => MaybePromise<ChatMessageData>;
+  callback?: ChatMessageCallback;
 
-  autocompleteCallback?: (
-    /** @todo Inspect this in the console */
-    menu: unknown,
-    // Alias used to invoke command
-    alias: string,
-    // Everything after 1st space or single char alias
-    parameters: string,
-  ) => MaybePromise<unknown[]>;
+  autocompleteCallback?: ChatMessageAutocompleteCallback;
   closeOnComplete?: boolean;
 }
-export interface ChatCommanderObject {
-  register: (data: ChatCommandData) => MaybePromise<void>;
+export interface ChatCommands {
+  register: (data: ChatCommand) => MaybePromise<void>;
 }
 
 export type ChatMessageCallback = (
   chat: ChatLog,
   parameters: string,
   messageData: ChatMessageData,
+) => MaybePromise<ChatMessageData>;
+
+export interface AutocompleteMenu {
+  maxEntries: number;
+  showFooter: boolean;
+  currentCommand: ChatCommand;
+  // The below are marked private in the jsdoc, but `visible` is used in an example
+  visible: boolean;
+  container: HTMLElement;
+  chatInput: HTMLTextAreaElement;
+  suggestionArea: HTMLTextAreaElement;
+}
+
+export type ChatMessageAutocompleteCallback = (
+  menu: AutocompleteMenu,
+  alias: string,
+  parameters: string,
 ) => MaybePromise<ChatMessageData>;

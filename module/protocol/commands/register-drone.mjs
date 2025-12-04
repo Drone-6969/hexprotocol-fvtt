@@ -1,20 +1,20 @@
-/** @import { ChatCommandData, ChatMessageCallback } from "../_types" */
+/** @import { ChatCommand, ChatMessageCallback } from "../_types" */
 
 import { HEXPROTO } from "../config.mjs";
 import { getUserByDroneId } from "../utils.mjs";
 
-/** @type {ChatCommandData} */
+/** @type {ChatCommand} */
 export const registerDroneCommand = {
   name: "/h!register",
   locName: "registerDrone",
   aliases: ["/h!dronify"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sun.svg" />',
-  callback: registerDroneCallback,
+  callback,
 };
 
 /** @type {ChatMessageCallback} */
-async function registerDroneCallback(_chat, parameters, _messageData) {
+async function callback(_chat, parameters, _messageData) {
   // Get name w/ game.users.getName
   const regex = /^(?<uname>.*)\s+(?<droneId>\d{4})$/;
 

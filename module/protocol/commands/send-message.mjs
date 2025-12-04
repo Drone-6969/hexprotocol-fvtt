@@ -1,19 +1,19 @@
-/** @import { ChatCommandData, ChatMessageCallback } from "./types" */
+/** @import { ChatCommand, ChatMessageCallback } from "../_types" */
 
-import { HEXPROTO } from "../config/config.mjs";
+import { HEXPROTO } from "../config.mjs";
 
-/** @type {ChatCommandData} */
+/** @type {ChatCommand} */
 export const sendMessageCommand = {
   name: "/h!send",
   locName: "sendMessage",
   aliases: ["/d", "/h"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sound.svg" />',
-  callback: sendMessageCallback,
+  callback,
 };
 
 /** @type {ChatMessageCallback} */
-function sendMessageCallback(chat, parameters, _messageData) {
+function callback(chat, parameters, _messageData) {
   const droneId = game.user.getFlag(HEXPROTO.MODULE_ID, "droneId");
   if (!droneId) {
     const errMsg = game.i18n.localize("HEXPROTO.error.notADrone");

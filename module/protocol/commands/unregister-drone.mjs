@@ -1,20 +1,20 @@
-/** @import { ChatCommandData, ChatMessageCallback } from "../_types" */
+/** @import { ChatCommand, ChatMessageCallback } from "../_types" */
 
 import { HEXPROTO } from "../config.mjs";
 import { getUserByDroneId } from "../utils.mjs";
 
-/** @type {ChatCommandData} */
+/** @type {ChatCommand} */
 export const unregisterDroneCommand = {
   name: "/h!unregister",
   locName: "unregisterDrone",
   aliases: ["/h!undronify"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/light-off.svg" />',
-  callback: unregisterCallback,
+  callback,
 };
 
 /** @type {ChatMessageCallback} */
-async function unregisterCallback(_chat, parameters, _messageData) {
+async function callback(_chat, parameters, _messageData) {
   // Use drone ID
   const regex = /^(?<droneId>\d{4})$/;
 
