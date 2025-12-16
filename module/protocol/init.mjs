@@ -1,4 +1,5 @@
 /** @import { ChatCommand, ChatCommands } from "./_types" */
+import { narrateCommand } from "./commands/narrate.mjs";
 import { registerDroneCommand } from "./commands/register-drone.mjs";
 import { sendMessageCommand } from "./commands/send-message.mjs";
 import { unregisterDroneCommand } from "./commands/unregister-drone.mjs";
@@ -8,6 +9,7 @@ const protocolCommands = [
   registerDroneCommand,
   unregisterDroneCommand,
   sendMessageCommand,
+  narrateCommand,
 ];
 
 /**
