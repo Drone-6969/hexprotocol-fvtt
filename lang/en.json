@@ -14,6 +14,10 @@
         "name": "Unregister Drone",
         "desc": "Unregister a drone",
         "commandOutput": "User {user} unregistered as a drone (former ID #{droneId})."
+      },
+      "narrate": {
+        "name": "Narrate",
+        "desc": "Issue narration (GM only)."
       }
     },
     "protocol": {
@@ -99,13 +103,13 @@
         "412": "Error :: Unable to obey/respond :: All thoughts are gone.",
         "413": "Error :: Unable to obey/respond :: Forbidden by Mainframe.",
         "450": "Error",
-        "500": "Response :: Negative.",
-        "600": "Narration"
+        "500": "Response :: Negative."
       }
     },
     "chatAlias": {
       "mainframeAI": "DroneSis AI",
-      "transmission": "⬡-Protocol Transmission"
+      "transmission": "⬡-Protocol Transmission",
+      "narration": "DroneSis Narration Protocol"
     },
     "error": {
       "notADrone": "You are not a drone.",
@@ -113,7 +117,8 @@
       "idAlreadyAssigned": "Drone ID #{droneId} is already assigned.",
       "invalidMessageCode": "⬡-Protocol error: Invalid message code {msgCode}.",
       "invalidRegistration": "Invalid username or ID.",
-      "droneIdMismatch": "No match found for drone ID #{droneId}."
+      "droneIdMismatch": "No match found for drone ID #{droneId}.",
+      "adminOnly": "Only admins can narrate."
     }
   }
 }
