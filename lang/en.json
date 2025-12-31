@@ -3,16 +3,16 @@
     "cmd": {
       "sendMessage": {
         "name": "Send Message",
-        "desc": "Send a ⬡-Protocol message"
+        "desc": "/h!send <code> [content]"
       },
       "registerDrone": {
         "name": "Register Drone",
-        "desc": "Register a drone",
+        "desc": "/h!register <username> <droneId>",
         "commandOutput": "User {user} registered as a drone with ID #{droneId}."
       },
       "unregisterDrone": {
         "name": "Unregister Drone",
-        "desc": "Unregister a drone",
+        "desc": "/h!unregister <droneId>",
         "commandOutput": "User {user} unregistered as a drone (former ID #{droneId})."
       },
       "narrate": {
@@ -104,7 +104,8 @@
         "413": "Error :: Unable to obey/respond :: Forbidden by Mainframe.",
         "450": "Error",
         "500": "Response :: Negative."
-      }
+      },
+      "narrationHeader": "Narrating:"
     },
     "chatAlias": {
       "mainframeAI": "DroneSis AI",

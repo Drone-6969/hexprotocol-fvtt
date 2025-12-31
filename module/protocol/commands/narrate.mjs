@@ -27,9 +27,10 @@ function callback(chat, parameters, _messageData) {
     return;
   }
 
+  const header = game.i18n.localize("HEXPROTO.protocol.narrationHeader");
   const narration = parameters.trim();
 
-  const content = `<span class="hexproto-output">${narration}</span>`;
+  const content = `<div class="hexproto-output">${header}</div><hr /><div class="hexproto-output">${narration}</div>`;
   const alias = game.i18n.localize("HEXPROTO.chatAlias.narration");
 
   const icon = "mainframe";
