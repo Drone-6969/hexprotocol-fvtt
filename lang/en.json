@@ -5,6 +5,10 @@
         "name": "Send Message",
         "desc": "/h!send <code> [content]"
       },
+      "sendMessageAs": {
+        "name": "Send Message As",
+        "desc": "/h!as <droneId> <code> [content]"
+      },
       "registerDrone": {
         "name": "Register Drone",
         "desc": "/h!register <username> <droneId>",
@@ -119,7 +123,8 @@
       "invalidMessageCode": "⬡-Protocol error: Invalid message code {msgCode}.",
       "invalidRegistration": "Invalid username or ID.",
       "droneIdMismatch": "No match found for drone ID #{droneId}.",
-      "adminOnly": "Only admins can narrate."
+      "adminOnly": "This command is admin-only.",
+      "invalidSendAs": "Must provide both drone ID and message code."
     }
   }
 }

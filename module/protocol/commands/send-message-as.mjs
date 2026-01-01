@@ -3,10 +3,10 @@
 import { HEXPROTO } from "../config.mjs";
 
 /** @type {ChatCommand} */
-export const sendMessageCommand = {
-  name: "/h!send",
-  locName: "sendMessage",
-  aliases: ["/d", "/h"],
+export const sendMessageAsCommand = {
+  name: "/h!as",
+  locName: "sendMessageAs",
+  aliases: ["/a"],
   module: HEXPROTO.MODULE_ID,
   icon: '<img src="icons/svg/sound.svg" />',
   callback,
@@ -14,24 +14,21 @@ export const sendMessageCommand = {
 
 /** @type {ChatMessageCallback} */
 function callback(chat, parameters, _messageData) {
-  const droneId = game.user.getFlag(HEXPROTO.MODULE_ID, "droneId");
-  if (!droneId) {
-    const errMsg = game.i18n.localize("HEXPROTO.error.notADrone");
-    foundry.ui.notifications.error(errMsg);
-    return;
-  }
-
-  // Gets a 3-digit message ID and content
-  const regex = /^((?<msgCode>\d{3})\s?)(?<msgContent>.*)$/;
-
-  const { msgCode, msgContent } = parameters.trim().match(regex).groups;
-
-  const whisper = [];
   let message = "";
+  const whisper = [];
 
-  if (!(msgCode in HEXPROTO.protocolCodes)) {
-    message = "HEXPROTO.error.invalidMessageCode";
-    whisper.push(game.user._id);
+  const regex = /^(?<droneId>\d{4})\s+(?<msgCode>\d{3})\s+(?<msgContent>.*)$/;
+
+  const { droneId, msgCode, msgContent } = parameters
+    .trim()
+    .match(regex).groups;
+
+  if (!game.user.isGM) {
+    message = "HEXPROTO.error.adminOnly";
+    whisper.push(game.user.id);
+  } else if (!droneId || !(msgCode in HEXPROTO.protocolCodes)) {
+    message = "HEXPROTO.error.invalidSendAs";
+    whisper.push(game.user.id);
   } else {
     message = "HEXPROTO.protocol.messageTemplate";
   }
