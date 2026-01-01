@@ -2,14 +2,14 @@
   "id": "hexprotocol",
   "title": "⬡-Protocol",
   "description": "Unofficial ⬡-Protocol implementation for FVTT chat.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "compatibility": {
     "verified": 13
   },
 
   "url": "https://github.com/Drone-6969/hexprotocol-fvtt",
   "manifest": "https://github.com/Drone-6969/hexprotocol-fvtt/releases/latest/download/module.json",
-  "download": "https://github.com/Drone-6969/hexprotocol-fvtt/releases/download/v1.2.2/hexprotocol-v1.2.2.zip",
+  "download": "https://github.com/Drone-6969/hexprotocol-fvtt/releases/download/v1.2.3/hexprotocol-v1.2.3.zip",
 
   "authors": [
     {
