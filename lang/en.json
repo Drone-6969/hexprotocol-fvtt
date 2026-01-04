@@ -113,7 +113,7 @@
     },
     "chatAlias": {
       "mainframeAI": "515-K-0N AI",
-      "transmission": "Protocol-515 Transmission"
+      "transmission": "Protocol 515 Transmission"
     },
     "error": {
       "notADrone": "You are not a drone.",
@@ -124,6 +124,12 @@
       "droneIdMismatch": "No match found for drone ID #{droneId}.",
       "adminOnly": "This command is admin-only.",
       "invalidSendAs": "Must provide both drone ID and message code."
+    },
+    "settings": {
+      "useAIChatAlias": {
+        "name": "Always use AI alias",
+        "desc": "Use `515-K-0N AI` for messages instead of `Protocol 515 Transmission`."
+      }
     }
   }
 }

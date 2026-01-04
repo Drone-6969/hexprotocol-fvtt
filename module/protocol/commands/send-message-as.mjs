@@ -50,7 +50,15 @@ function callback(chat, parameters, _messageData) {
   }
 
   const content = `<span class="hexproto-output">${protocolOutput}</span>`;
-  const alias = game.i18n.localize("HEXPROTO.chatAlias.transmission");
+
+  const useAIChatAlias = game.settings.get(
+    HEXPROTO.MODULE_ID,
+    "useAIChatAlias",
+  );
+
+  const aliasName = useAIChatAlias ? "mainframeAI" : "transmission";
+
+  const alias = game.i18n.localize(`HEXPROTO.chatAlias.${aliasName}`);
 
   const icon = "mainframe";
 
