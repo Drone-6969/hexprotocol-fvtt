@@ -22,6 +22,10 @@
       "narrate": {
         "name": "Narrate",
         "desc": "Issue narration (GM only)."
+      },
+      "aiMessage": {
+        "name": "Send Message As AI",
+        "desc": "/h!ai <content>"
       }
     },
     "protocol": {
